@@ -1,12 +1,14 @@
 from fastapi import FastAPI, HTTPException
-from schemas import ReviewRequest, SentimentResponse  # <--- CHANGED (No 'app.')
-from model import classifier                          # <--- CHANGED (No 'app.')
+from fastapi.responses import RedirectResponse  # <--- IMPORT THIS
+from schemas import ReviewRequest, SentimentResponse
+from model import classifier
 
 app = FastAPI(title="Sentiment Analysis API", version="1.0")
 
-@app.get("/")
+# 1. CHANGED: The root path now redirects straight to /docs
+@app.get("/", include_in_schema=False)
 def home():
-    return {"message": "System Operational. Use /predict endpoint."}
+    return RedirectResponse(url="/docs")
 
 @app.post("/predict", response_model=SentimentResponse)
 def predict_sentiment(request: ReviewRequest):
@@ -14,6 +16,5 @@ def predict_sentiment(request: ReviewRequest):
         result = classifier.predict(request.text)
         return result
     except Exception as e:
-        # This prints the actual error to your cloud logs for debugging
         print(f"ERROR: {str(e)}")
         raise HTTPException(status_code=500, detail="Internal processing error.")
