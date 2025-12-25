@@ -1,5 +1,5 @@
 from fastapi import FastAPI, HTTPException
-from fastapi.responses import RedirectResponse  # <--- IMPORT THIS
+from fastapi.responses import RedirectResponse 
 from schemas import ReviewRequest, SentimentResponse
 from model import classifier
 
