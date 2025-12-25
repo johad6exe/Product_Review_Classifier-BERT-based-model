@@ -8,7 +8,7 @@
 A production-ready, serverless REST API that classifies product reviews as **Positive** or **Negative** in real-time. Built with **FastAPI** for high performance and **Docker** for easy deployment.
 
 ## 🔗 Live Demo
-**[👉 Click here to try the API / Documentation]([https://[INSERT_YOUR_HF_SPACE_LINK_HERE]/docs](https://pjr-explores-sentiment-analysis-api.hf.space/docs))**
+**[👉 Click here to try the API / Documentation]([https://pjr-explores-sentiment-analysis-api.hf.space/docs])**
 
 ---
 
